@@ -1,0 +1,186 @@
+:root {
+  --concrete: #b0b0b0;
+  --concrete-light: #d0d0d0;
+  --black: #0f0f0f;
+  --white: #f5f5f5;
+  --signal: #ff5f1f; /* Safety Orange */
+  --border-width: 4px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  /* Concrete texture effect using gradients and noise */
+  background-color: var(--concrete);
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1) 0%, transparent 80%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Cfilter id='noiseFilter'%3%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3%3C/filter%3%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3%3C/svg%3");
+  color: var(--black);
+  font-family: 'Inter', -apple-system, sans-serif;
+  line-height: 1.4;
+  padding: 2rem;
+  min-height: 100vh;
+}
+
+h1 {
+  text-transform: uppercase;
+  font-weight: 950;
+  font-size: 4rem;
+  letter-spacing: -0.05em;
+  color: var(--signal);
+  line-height: 0.9;
+  margin-bottom: 0.5rem;
+  /* Graffiti-style shadow */
+  text-shadow: 4px 4px 0px var(--black);
+}
+
+h2, h3 {
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.header p {
+  font-weight: bold;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-size: 1rem;
+  background: var(--black);
+  color: var(--white);
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: var(--border-width) solid var(--signal);
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+a:hover {
+  background-color: var(--black);
+  color: var(--signal);
+  border-bottom-color: var(--black);
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  border: var(--border-width) solid var(--black);
+  background-color: var(--white);
+  padding: 4rem;
+  box-shadow: 20px 20px 0px var(--black);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle graffiti "tag" effect in background */
+.container::before {
+  content: "BERLIN";
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  font-size: 10rem;
+  font-weight: 900;
+  color: var(--concrete);
+  opacity: 0.2;
+  z-index: 0;
+  pointer-events: none;
+  transform: rotate(5deg);
+}
+
+.header {
+  position: relative;
+  z-index: 1;
+  border-bottom: 8px solid var(--black);
+  padding-bottom: 2rem;
+  margin-bottom: 4rem;
+}
+
+.nav {
+  margin-top: 2rem;
+  display: flex;
+  gap: 3rem;
+}
+
+.section-title {
+  display: inline-block;
+  background-color: var(--signal);
+  color: var(--black);
+  padding: 0.5rem 1.5rem;
+  margin-bottom: 2rem;
+  transform: skewX(-10deg);
+}
+
+.wip-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+.wip-card {
+  border: var(--border-width) solid var(--black);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: var(--white);
+  transition: transform 0.2s ease;
+}
+
+.wip-card:hover {
+  transform: translate(-5px, -5px);
+  box-shadow: 10px 10px 0px var(--signal);
+}
+
+/* Gauge Styles */
+.gauge-container {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  margin: 1.5rem 0;
+}
+
+.gauge-svg {
+  transform: rotate(-90deg);
+}
+
+.gauge-bg {
+  fill: none;
+  stroke: var(--concrete-light);
+  stroke-width: 14;
+}
+
+.gauge-fill {
+  fill: none;
+  stroke: var(--black);
+  stroke-width: 14;
+  stroke-linecap: square;
+}
+
+.gauge-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: 900;
+  font-size: 1.5rem;
+}
+
+.dad-joke {
+  margin-top: 6rem;
+  font-family: 'Permanent Marker', 'Courier New', cursive;
+  border-top: 4px solid var(--black);
+  padding-top: 2rem;
+  font-size: 1.2rem;
+  color: var(--black);
+}
